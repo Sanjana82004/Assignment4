@@ -1,0 +1,26 @@
+public class Assignment4D {
+ public static void main (String args[]) {
+	try {
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/college", "root", "1234");
+		Statement stmt = con.createStatement();
+		String query = "SELECT*FROM student WHERE semester = 7 AND branch = 'EC'";
+		ResultSet rs = stmt.executeQuery(query);
+		System.out.println("id name branch semester percentage year");
+		while(rs.next()) {
+			System.out.println(
+				rs.getInt("id")	+ " "+
+			rs.getString("name")+ " "+
+			rs.getString("branch")+ " "	+
+			rs.getInt("semester")+ " "+
+			rs.getDouble("percentage")+ " "+
+			rs.getInt("year_of_passing")
+					
+					
+					);
+		}
+		con.close();
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+ }
+}
